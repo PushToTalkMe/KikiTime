@@ -1,0 +1,27 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.directions {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.direction {
+  background-color: rgb(83, 83, 255);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.direction.active {
+  opacity: 1;
+}

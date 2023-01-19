@@ -1,0 +1,58 @@
+.card {
+  display: flex;
+  border: 1px solid rgb(219, 215, 215);
+  flex-direction: row;
+  width: 350px;
+  height: 250px;
+  box-shadow: 4px 4px 8px 1px rgb(167, 165, 165);
+  border-radius: 5px;
+  margin: 0px 40px 30px 0;
+}
+.card img {
+  width: 50%;
+}
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cardHeader button {
+  background-color: white;
+  border: none;
+  margin: 5px 7px 5px 15px;
+  padding: 0;
+  cursor: pointer;
+}
+.cardHeader img {
+  width: 20px;
+}
+.cardHeader p {
+  font-size: 16px;
+  margin-left: 5px;
+}
+.cardFooter button {
+  background-color: white;
+  border: none;
+  border-top: 1px solid rgb(167, 165, 165);
+  width: 100%;
+  padding: 15px;
+  cursor: pointer;
+}
+.cardFooter button:hover {
+  background: linear-gradient(
+    113deg,
+    rgba(76, 244, 199, 1) 7%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  cursor: pointer;
+}
+h4 {
+  flex: 0.7;
+  margin: 5px;
+  font-size: 18px;
+}
