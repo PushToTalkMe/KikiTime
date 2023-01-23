@@ -80,7 +80,7 @@ export const listFilmsReducer = (
       );
     case SORT_BY_GENRES:
       return state.filter((film) =>
-        film.genre_ids.some((id) => action.payload.includes(id))
+        action.payload.every((id: any) => film.genre_ids.includes(id))
       );
     default:
       return state;

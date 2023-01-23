@@ -1,3 +1,5 @@
+//Сделать симуляцию запроса https://my-json-server.typicode.com/
+
 import React from "react";
 import { useState } from "react";
 import Header from "./components/header/Header";

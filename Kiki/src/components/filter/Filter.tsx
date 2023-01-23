@@ -30,7 +30,9 @@ function Filter() {
   useEffect(() => {
     if (genres.length > 0) {
       console.log(genres.length);
+      dispatch({ type: year });
       dispatch({ type: "GENRES", payload: genres });
+      dispatch({ type: sortBy });
     } else if (genres.length === 0) {
       dispatch({ type: year });
       dispatch({ type: sortBy });
