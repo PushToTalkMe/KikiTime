@@ -1,0 +1,58 @@
+/* POPUP */
+.popup {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.auth {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  height: 25%;
+  background-color: white;
+  padding: 10px;
+  margin: auto;
+}
+
+.auth h1 {
+  margin: auto;
+}
+
+.auth form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth form input {
+  width: 75%;
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.confirmButton {
+  background-color: white;
+  border: 1px solid rgb(167, 165, 165);
+  border-radius: 15px;
+  width: 100%;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.confirmButton:hover {
+  background: linear-gradient(
+    113deg,
+    rgb(66, 250, 90) 7%,
+    rgb(27, 255, 141) 100%
+  );
+  cursor: pointer;
+}
