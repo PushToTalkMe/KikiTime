@@ -1,0 +1,71 @@
+.main_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70vh;
+  margin: 0 auto;
+  color: white;
+  background: rgb(0, 0, 0, 0.7);
+}
+
+.backdrop {
+  position: absolute;
+  z-index: -1;
+  background-size: cover;
+  width: 100%;
+  height: 70%;
+}
+
+.poster {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  width: 100%;
+}
+
+.poster img {
+  width: 400px;
+  padding: 50px;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  width: 50%;
+}
+
+.overview h1 {
+  font-size: 36px;
+}
+
+.overview span {
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.overview p {
+  font-size: 20px;
+}
+
+.alt_content {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  padding: 20px 100px;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  font-size: 22px;
+}
+
+.tabs a {
+  padding: 10px;
+}
+
+.active {
+  border-bottom: 1px solid black;
+}

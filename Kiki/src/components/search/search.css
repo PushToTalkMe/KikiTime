@@ -1,0 +1,90 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.select {
+  width: 50%;
+  border: 1px solid rgb(167, 165, 165);
+  border-radius: 5px;
+  color: rgb(43, 42, 42);
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.search .film {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.search .film .poster {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  width: 100%;
+}
+
+.search .film .poster img {
+  width: 400px;
+  padding: 50px;
+}
+
+.search .film .overview {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  width: 50%;
+}
+
+.search .film .overview h1 {
+  font-size: 36px;
+}
+
+.search .film .overview .genres {
+  display: flex;
+  font-size: 20px;
+}
+
+.search .film .overview p {
+  padding: 0 2px;
+}
+
+.choice {
+  display: flex;
+  justify-content: center;
+}
+
+.yes {
+  background-color: rgb(54, 231, 38);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.no {
+  background-color: rgb(83, 83, 255);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
