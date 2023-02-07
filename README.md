@@ -1,5 +1,3 @@
-# KikiTime
-
 # **Суть и принцип работы приложения**
 
 https://www.youtube.com/watch?v=zSvlezL1NBU
