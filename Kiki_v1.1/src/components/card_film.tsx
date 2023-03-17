@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Grid,
   Card,
@@ -11,10 +10,14 @@ import {
   Stack,
   IconButton,
 } from "@mui/material";
+import { useTypedSelector } from "../hooks/use_typed_selector";
+import { useDispatch } from "react-redux";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
+import { useContext } from "react";
+import { Context } from "./context";
 
 function CardFilm({
   id,
@@ -27,6 +30,66 @@ function CardFilm({
   title: string;
   vote: number;
 }) {
+  const setOpen = useContext(Context);
+
+  const favorites = useTypedSelector(
+    (state) => state.listFilmsReducer.favorites
+  );
+  const watchLater = useTypedSelector(
+    (state) => state.listFilmsReducer.watchLater
+  );
+  const isAuth = useTypedSelector((state) => state.authReducer.isAuth);
+
+  const dispatch = useDispatch();
+
+  const handleFavorite = () => {
+    if (isAuth) {
+      if (!favorites.includes(id)) {
+        dispatch({ type: "ADD_FAVORITES", payload: id });
+      } else {
+        dispatch({ type: "REMOVE_FAVORITES", payload: id });
+      }
+    } else {
+      setOpen(true);
+    }
+  };
+
+  const handleWatchLater = () => {
+    if (isAuth) {
+      if (!watchLater.includes(id)) {
+        dispatch({ type: "ADD_WATCH_LATER", payload: id });
+      } else {
+        dispatch({ type: "REMOVE_WATCH_LATER", payload: id });
+      }
+    } else {
+      setOpen(true);
+    }
+  };
+
+  const iconStatusStar = () => {
+    return isAuth ? (
+      favorites.includes(id) ? (
+        <StarOutlinedIcon />
+      ) : (
+        <StarBorderOutlinedIcon />
+      )
+    ) : (
+      <StarBorderOutlinedIcon />
+    );
+  };
+
+  const iconStatusWatchLater = () => {
+    return isAuth ? (
+      watchLater.includes(id) ? (
+        <BookmarkOutlinedIcon />
+      ) : (
+        <BookmarkBorderOutlinedIcon />
+      )
+    ) : (
+      <BookmarkBorderOutlinedIcon />
+    );
+  };
+
   return (
     <Grid item xs={12} lg={6} xl={4}>
       <Card sx={{ display: "flex", maxWidth: "500px" }}>
@@ -46,11 +109,11 @@ function CardFilm({
               <Typography variant="h6" sx={{ flex: "1 1 auto" }}>
                 Рейтинг: {vote}
               </Typography>
-              <IconButton>
-                <StarBorderOutlinedIcon />
+              <IconButton onClick={() => handleFavorite()}>
+                {iconStatusStar()}
               </IconButton>
-              <IconButton>
-                <BookmarkBorderOutlinedIcon />
+              <IconButton onClick={() => handleWatchLater()}>
+                {iconStatusWatchLater()}
               </IconButton>
             </Stack>
             <Typography variant="h5">{title}</Typography>

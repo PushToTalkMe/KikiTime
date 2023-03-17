@@ -5,4 +5,9 @@ export const valueOfSort = [
   ["RATING_DESCENDING", "Рейтинг по убыванию"],
   ["RATING_ASCENDING", "Рейтинг по возрастанию"],
 ];
+export const exclusive = [
+  ["NOT_CHOICE", "Не выбрано"],
+  ["FAVORITES", "Избранные"],
+  ["WATCH_LATER", "Отложенные"],
+];
 export const cardsPerPage = 12;

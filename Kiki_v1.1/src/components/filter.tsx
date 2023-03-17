@@ -8,16 +8,21 @@ import {
   Typography,
   FormGroup,
   Checkbox,
+  Pagination,
 } from "@mui/material";
-import Pagination from "@mui/material/Pagination";
+import { useState } from "react";
 import { dataListGenres } from "../data/data_list_genres";
-import { releaseYear, valueOfSort } from "../data/consts";
+import { releaseYear, valueOfSort, exclusive } from "../data/consts";
 import { useDispatch } from "react-redux";
 import { cardsPerPage } from "../data/consts";
 import { useTypedSelector } from "../hooks/use_typed_selector";
 
 function Filter() {
   const listFilms = useTypedSelector((state) => state.listFilmsReducer);
+  const auth = useTypedSelector((state) => state.authReducer);
+
+  const [valueOfExclusive, setValueOfExclusive] = useState("");
+
   const totalPages = Math.ceil(listFilms.currentFilms.length / cardsPerPage);
 
   const dispatch = useDispatch();
@@ -25,6 +30,8 @@ function Filter() {
     <Box
       sx={{
         display: "flex",
+        position: "sticky",
+        top: -90,
         flexDirection: "column",
         border: "1px solid black",
         borderRadius: "10px",
@@ -74,6 +81,27 @@ function Filter() {
           ))}
         </Select>
       </FormControl>
+      {auth.isAuth ? (
+        <FormControl sx={{ width: "90%", mt: "10px" }}>
+          <InputLabel id="exclusive">Избранные/Отложенные</InputLabel>
+          <Select
+            labelId="exclusive"
+            label="exclusive"
+            value={valueOfExclusive}
+            onChange={(e) => {
+              setValueOfExclusive(e.target.value);
+              dispatch({ type: `FILTER_${e.target.value}` });
+              dispatch({ type: "FILTER" });
+            }}
+          >
+            {exclusive.map((exclusive, index) => (
+              <MenuItem key={index} value={exclusive[0]}>
+                {exclusive[1]}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      ) : null}
       <FormGroup
         sx={{
           margin: "10px 0",

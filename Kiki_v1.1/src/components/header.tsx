@@ -1,5 +1,3 @@
-// Разобраться с интпутом и лейблом
-
 import {
   AppBar,
   Toolbar,
@@ -16,13 +14,18 @@ import { useState } from "react";
 import { useTypedSelector } from "../hooks/use_typed_selector";
 import { useDispatch } from "react-redux";
 
-function Header() {
-  const [open, setOpen] = useState(false);
+function Header({
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: (arg0: boolean) => void;
+}) {
   const [user, setUser] = useState({ login: "", password: "" });
   const auth = useTypedSelector((state) => state.authReducer);
 
   const dispatch = useDispatch();
-  const handleClickOpen = () => {
+  const handleOpen = () => {
     setOpen(true);
   };
 
@@ -41,7 +44,7 @@ function Header() {
           Home
         </Typography>
         {!auth.isAuth ? (
-          <Button color="inherit" onClick={handleClickOpen}>
+          <Button color="inherit" onClick={handleOpen}>
             Login
           </Button>
         ) : (
