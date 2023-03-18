@@ -6,7 +6,6 @@ import {
   CardActions,
   Typography,
   Button,
-  Box,
   Stack,
   IconButton,
 } from "@mui/material";
@@ -16,8 +15,9 @@ import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { Context } from "./context";
+import { Context } from "../context";
 
 function CardFilm({
   id,
@@ -118,11 +118,18 @@ function CardFilm({
             </Stack>
             <Typography variant="h5">{title}</Typography>
           </CardContent>
-          <CardActions>
-            <Button variant="outlined" sx={{ width: "100%" }}>
-              Подробнее
-            </Button>
-          </CardActions>
+          <Link
+            onClick={() => {
+              dispatch({ type: "ADD_FILM", payload: id });
+            }}
+            to={`/KikiTime/${id}`}
+          >
+            <CardActions>
+              <Button variant="outlined" sx={{ width: "100%" }}>
+                Подробнее
+              </Button>
+            </CardActions>
+          </Link>
         </Stack>
       </Card>
     </Grid>

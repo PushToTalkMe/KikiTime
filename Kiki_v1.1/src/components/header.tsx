@@ -11,6 +11,7 @@ import {
   TextField,
 } from "@mui/material/";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTypedSelector } from "../hooks/use_typed_selector";
 import { useDispatch } from "react-redux";
 
@@ -41,15 +42,34 @@ function Header({
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Home
+          <Link
+            to={"/KikITime/"}
+            style={{
+              textDecoration: "none",
+              color: "white",
+            }}
+          >
+            Домой
+          </Link>
+        </Typography>
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <Link
+            to={"/KikiTime/search"}
+            style={{
+              textDecoration: "none",
+              color: "white",
+            }}
+          >
+            Поиск
+          </Link>
         </Typography>
         {!auth.isAuth ? (
           <Button color="inherit" onClick={handleOpen}>
-            Login
+            Войти
           </Button>
         ) : (
           <Button color="inherit" onClick={handleLogout}>
-            Logout
+            Выйти
           </Button>
         )}
         <Dialog open={open} onClick={handleClose}>
