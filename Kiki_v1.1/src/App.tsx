@@ -5,8 +5,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ListFilms } from "./components/list_films";
 import { Filter } from "./components/filter";
 import { Film } from "./components/film";
+//Сделать универсальный компонент селект?
 import { Context } from "./context";
-// import { Search } from "./components/search";
+import { Search } from "./components/search";
 function App() {
   const [open, setOpen] = useState(false);
   return (
@@ -32,7 +33,7 @@ function App() {
             }
           ></Route>
           <Route path="/KikiTime/:id" element={<Film />}></Route>
-          {/* <Route path="/KikiTime/search" element={<Search />}></Route> */}
+          <Route path="/KikiTime/search" element={<Search />}></Route>
         </Routes>
       </Box>
     </Router>

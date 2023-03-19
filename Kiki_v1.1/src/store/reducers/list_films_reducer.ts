@@ -7,14 +7,22 @@ const FILTER = "FILTER";
 const FILTER_FAVORITESS = "FILTER_FAVORITES";
 const FILTER_WATCH_LATER = "FILTER_WATCH_LATER";
 const FILTER_NOT_CHOICE = "FILTER_NOT_CHOICE";
+const FILTER_SEARCH = "FILTER_SEARCH";
 const ADD_YEAR = "ADD_YEAR";
 const ADD_SORT = "ADD_SORT";
 const ADD_GENRES = "ADD_GENRES";
 const ADD_FAVORITES = "ADD_FAVORITES";
+const ADD_GENRE = "ADD_GENRE";
+const ADD_VOTE = "ADD_VOTE";
+const ADD_POPULARITY = "ADD_POPULARITY";
 const REMOVE_FAVORITES = "REMOVE_FAVORITES";
 const ADD_WATCH_LATER = "ADD_WATCH_LATER";
 const REMOVE_WATCH_LATER = "REMOVE_WATCH_LATER";
 const DELETE_GENRES = "DELETE_GENRES";
+const HIGH = "HIGH";
+const LOW = "LOW";
+const POPULAR = "POPULAR";
+const UNKNOWN = "UNKNOWN";
 
 const favoritesJson = localStorage.getItem("favorites");
 const watchLaterJson = localStorage.getItem("watchLater");
@@ -22,14 +30,18 @@ const watchLaterJson = localStorage.getItem("watchLater");
 const initialState = {
   listFilms: dataListFilms,
   currentFilms: [],
+  searchFilms: [],
   favorites: favoritesJson !== null ? JSON.parse(favoritesJson) : [],
   watchLater: watchLaterJson !== null ? JSON.parse(watchLaterJson) : [],
   filter: {
     year: 2020,
-    sortBy: "POPULAR_DESCENDING",
+    sortBy: POPULAR_DESCENDING,
     genres: [],
     favorites: false,
     watchLater: false,
+    vote: "",
+    genre: "",
+    popularity: "",
   },
   filterYear() {
     return {
@@ -104,6 +116,44 @@ const initialState = {
       ),
     };
   },
+  filterVote() {
+    if (this.filter.vote === HIGH) {
+      return {
+        ...this,
+        searchFilms: dataListFilms.filter((film) => film.vote_average > 5),
+      };
+    } else if (this.filter.vote === LOW) {
+      return {
+        ...this,
+        searchFilms: dataListFilms.filter((film) => film.vote_average <= 5),
+      };
+    }
+  },
+  filterGenre() {
+    return {
+      ...this,
+      searchFilms: this.searchFilms.filter((film) =>
+        film.genre_ids.includes(this.filter.genre)
+      ),
+    };
+  },
+  filterPopularity() {
+    if (this.filter.popularity === POPULAR) {
+      return {
+        ...this,
+        searchFilms: this.searchFilms.filter(
+          (film) => film.popularity > 100 && film.vote_count > 200
+        ),
+      };
+    } else if (this.filter.popularity === UNKNOWN) {
+      return {
+        ...this,
+        searchFilms: this.searchFilms.filter(
+          (film) => film.popularity < 100 && film.vote_count <= 200
+        ),
+      };
+    }
+  },
 };
 
 export const listFilmsReducer = (
@@ -149,6 +199,12 @@ export const listFilmsReducer = (
           watchLater: false,
         },
       }));
+    case FILTER_SEARCH:
+      if (state.filter.genre && state.filter.vote && state.filter.popularity) {
+        return state.filterVote().filterGenre().filterPopularity();
+      } else {
+        return state;
+      }
     case ADD_YEAR:
       return (state = Object.assign({}, state, {
         filter: { ...state.filter, year: action.payload },
@@ -201,6 +257,30 @@ export const listFilmsReducer = (
       return (state = Object.assign({}, state, {
         watchLater: deletedWatchLater,
       }));
+    case ADD_GENRE:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          genre: action.payload,
+        },
+      };
+    case ADD_VOTE:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          vote: action.payload,
+        },
+      };
+    case ADD_POPULARITY:
+      return {
+        ...state,
+        filter: {
+          ...state.filter,
+          popularity: action.payload,
+        },
+      };
     default:
       return state;
   }
