@@ -14,7 +14,6 @@ function Film() {
   const title = film.title;
   const vote = film.vote_average;
   const overview = film.overview;
-  const id = film.id;
   const dateNow = format(new Date(), "yyyy-MM-dd");
   const dateRelease = film.release_date;
   const isRelease = dateNow < dateRelease ? "No released" : "Released";

@@ -184,69 +184,17 @@ function Search() {
             </Box>
           </Stack>
         ) : (
-          <Typography>
+          <Typography variant="h5" sx={{ mt: "10px", textAlign: "center" }}>
             К сожалению, фильм с данными параметрами не найден.
           </Typography>
         )
       ) : (
-        <Typography>
+        <Typography variant="h5" sx={{ mt: "10px", textAlign: "center" }}>
           Выберите жанр, оценку и популярность, и тогда предложим вам фильм,
           который соотвествует вашим желаниям!
         </Typography>
       )}
     </Stack>
   );
-  // return (
-  //   <div className="search">
-  //     {active === true && index !== films.length ? (
-  //       <>
-  //         <div className="film" key={films[index].id}>
-  //           <div className="poster">
-  //             <img
-  //               src={`https://image.tmdb.org/t/p/w500${films[index].poster_path}`}
-  //               alt="poster"
-  //             />
-  //             <div className="overview">
-  //               <h1>{films[index].title}</h1>
-  //               <div className="genres">
-  //                 <h4 style={{ flex: 0, padding: 1, margin: 0 }}>Жанры:</h4>
-  //                 {nameGenres().map((name, index) =>
-  //                   index + 1 === nameGenres().length ? (
-  //                     <p key={index}>{name}.</p>
-  //                   ) : (
-  //                     <p key={index}>{name},</p>
-  //                   )
-  //                 )}
-  //               </div>
-  //               <p>{films[index].overview}</p>
-  //             </div>
-  //           </div>
-  //         </div>
-  //         <div className="choice">
-  //           <button
-  //             className="no"
-  //             onClick={() => {
-  //               setIndex(index + 1);
-  //             }}
-  //           >
-  //             Не подходит
-  //           </button>
-  //           <Link
-  //             onClick={() => {
-  //               dispatch({ type: "ADD_FILM", payload: films[index].id });
-  //             }}
-  //             to={`/KikiTime/${films[index].id}`}
-  //           >
-  //             <button className="yes">Подходит</button>
-  //           </Link>
-  //         </div>
-  //       </>
-  //     ) : (
-  //       <div className="film">
-  //         <h1>{title}</h1>
-  //       </div>
-  //     )}
-  //   </div>
-  // );
 }
 export { Search };

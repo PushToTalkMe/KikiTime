@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "http://localhost:5173/KikiTime",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
