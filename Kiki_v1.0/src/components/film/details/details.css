@@ -1,0 +1,21 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid rgb(167, 165, 165, 0.5);
+}
+
+.status h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.status span {
+  margin-right: 60%;
+}

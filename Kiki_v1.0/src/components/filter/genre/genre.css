@@ -1,0 +1,9 @@
+.genre {
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+}
+
+.genre input {
+  margin-right: 4px;
+}
