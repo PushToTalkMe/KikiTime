@@ -1,6 +1,5 @@
 # **Начало работы**
 
-- `cd Kiki_1.5`
+- `cd Kiki_v1.5`
 - `npm install`
 - `npm run dev`
-
