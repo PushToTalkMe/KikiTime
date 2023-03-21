@@ -29,14 +29,14 @@ const watchLaterJson = localStorage.getItem("watchLater");
 
 const initialState = {
   listFilms: dataListFilms,
-  currentFilms: [],
-  searchFilms: [],
-  favorites: favoritesJson !== null ? JSON.parse(favoritesJson) : [],
-  watchLater: watchLaterJson !== null ? JSON.parse(watchLaterJson) : [],
+  currentFilms: <any[]>[],
+  searchFilms: <any[]>[],
+  favorites: favoritesJson !== null ? JSON.parse(favoritesJson) : <any[]>[],
+  watchLater: watchLaterJson !== null ? JSON.parse(watchLaterJson) : <any[]>[],
   filter: {
     year: 2020,
     sortBy: POPULAR_DESCENDING,
-    genres: [],
+    genres: <number[]>[],
     favorites: false,
     watchLater: false,
     vote: "",
@@ -54,7 +54,7 @@ const initialState = {
   filterSortBy() {
     return {
       ...this,
-      currentFilms: this.currentFilms.sort((a: any, b: any) => {
+      currentFilms: this.currentFilms.sort((a, b) => {
         switch (this.filter.sortBy) {
           case POPULAR_ASCENDING:
             if (a.popularity > b.popularity) {
@@ -120,19 +120,21 @@ const initialState = {
     if (this.filter.vote === HIGH) {
       return {
         ...this,
-        searchFilms: dataListFilms.filter((film) => film.vote_average > 5),
+        searchFilms: dataListFilms.filter((film: any) => film.vote_average > 5),
       };
     } else if (this.filter.vote === LOW) {
       return {
         ...this,
-        searchFilms: dataListFilms.filter((film) => film.vote_average <= 5),
+        searchFilms: dataListFilms.filter(
+          (film: any) => film.vote_average <= 5
+        ),
       };
     }
   },
   filterGenre() {
     return {
       ...this,
-      searchFilms: this.searchFilms.filter((film) =>
+      searchFilms: this.searchFilms.filter((film: any) =>
         film.genre_ids.includes(this.filter.genre)
       ),
     };
@@ -142,14 +144,14 @@ const initialState = {
       return {
         ...this,
         searchFilms: this.searchFilms.filter(
-          (film) => film.popularity > 100 && film.vote_count > 200
+          (film: any) => film.popularity > 100 && film.vote_count > 200
         ),
       };
     } else if (this.filter.popularity === UNKNOWN) {
       return {
         ...this,
         searchFilms: this.searchFilms.filter(
-          (film) => film.popularity < 100 && film.vote_count <= 200
+          (film: any) => film.popularity < 100 && film.vote_count <= 200
         ),
       };
     }
@@ -157,7 +159,7 @@ const initialState = {
 };
 
 export const listFilmsReducer = (
-  state = initialState.filterYear().filterGenres(),
+  state: any = initialState.filterYear().filterGenres(),
   action: { payload: number[] | number; type: string }
 ) => {
   switch (action.type) {

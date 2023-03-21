@@ -24,7 +24,9 @@ function Search() {
   const nameGenres = () => {
     const ids = dataListGenres.map((genreOfList) => {
       if (
-        films.searchFilms[index].genre_ids.some((id) => id === genreOfList.id)
+        films.searchFilms[index].genre_ids.some(
+          (id: any) => id === genreOfList.id
+        )
       ) {
         return genreOfList.name;
       }

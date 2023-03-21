@@ -16,7 +16,7 @@ function ListFilms() {
 
   return (
     <Grid container spacing={2}>
-      {currentCards.map((film) => {
+      {currentCards.map((film: any) => {
         return (
           <CardFilm
             key={film.id}

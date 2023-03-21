@@ -30,7 +30,7 @@ function CardFilm({
   title: string;
   vote: number;
 }) {
-  const setOpen = useContext(Context);
+  const setOpen: any = useContext(Context);
 
   const favorites = useTypedSelector(
     (state) => state.listFilmsReducer.favorites
