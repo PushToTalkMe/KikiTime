@@ -4,7 +4,7 @@
 
 [Видеообзор и инструкция для приложения](https://www.youtube.com/watch?v=zSvlezL1NBU)
 
-[Приложение](https://pushtotalkme.github.io/KikiTime/) - если вы пользователь из России, вам необходимо включить VPN для корректного отображения фильмов
+[Приложение](https://pushtotalkme.github.io/KikiTime/) - если вы пользователь из России, вам необходимо включить VPN для корректного отображения фильмов.
 
 [Код последней версии приложения (MUi)](https://github.com/PushToTalkMe/KikiTime/tree/KikiTime_v1.5)
 
