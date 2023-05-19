@@ -9,7 +9,7 @@
 [Код последней версии приложения (MUi)](https://github.com/PushToTalkMe/KikiTime/tree/KikiTime_v1.5)
 
 [Код старого приложения (css)](https://github.com/PushToTalkMe/KikiTime/tree/KikiTime_v1.0)
-
+ 
 В нем были реализованы следующие функции:
   - Авторизация
   - Фильтры (по жанрам, году выпуска, избранные/отложенные)
